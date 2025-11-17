@@ -54,11 +54,18 @@
       try{
         const res=await fetch('/assets/episodes.json');
         const items=await res.json();
-        render(items.length?items:fallback)
-      }catch(e){render(fallback)}
+        render(items)
+      }catch(e){render([])}
     }
     function render(items){
       const el=document.getElementById('episodes-list');el.innerHTML='';
+      if (!items || !items.length) {
+        const card=document.createElement('div');card.className='card';
+        const h=document.createElement('h3');h.textContent='Episodes are coming soon';
+        const p=document.createElement('p');p.textContent='Follow along as we launch the show';
+        card.appendChild(h);card.appendChild(p);el.appendChild(card);
+        return;
+      }
       items.forEach(it=>{
         const card=document.createElement('div');card.className='card';
         if (it.thumbnail) { const img=document.createElement('img'); img.className='card-img'; img.src=it.thumbnail || placeholders[it.imageId] || placeholders['world-map'] || ''; img.alt=it.title; card.appendChild(img); }

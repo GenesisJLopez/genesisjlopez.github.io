@@ -39,7 +39,7 @@
       <h1 class="hero-title">Stories from the road</h1>
       <p class="hero-sub">City episodes, real reviews, and standout local businesses across the country.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#episodes">Watch Episodes</a>
+        <a class="btn btn-primary" href="/episodes/">Watch Episodes</a>
         <a class="btn btn-secondary" href="#feature">Feature Your Business</a>
       </div>
     </div>
@@ -100,29 +100,29 @@
     async function loadEpisodes() {
       try {
         const res = await fetch('assets/episodes.json');
-        if (!res.ok) throw new Error('no episodes');
         const items = await res.json();
         renderEpisodes(items);
       } catch {
-        renderEpisodes([
-          { slug: 'austin-tx', title: 'Austin, TX', description: 'Live music, local eats, and lakeside sunsets.', thumbnail: '' },
-          { slug: 'denver-co', title: 'Denver, CO', description: 'Mountain views and downtown coffee crawls.', thumbnail: '' },
-          { slug: 'miami-fl', title: 'Miami, FL', description: 'Beach vibes, art deco, and Cuban flavors.', thumbnail: '' }
-        ]);
+        renderEpisodes([]);
       }
     }
 
     function renderEpisodes(items) {
       const el = document.getElementById('episodes-list');
       el.innerHTML = '';
+      if (!items || !items.length) {
+        const card = document.createElement('div'); card.className = 'card';
+        const h = document.createElement('h3'); h.textContent = 'Episodes are coming soon';
+        const p = document.createElement('p'); p.textContent = 'Follow along as we launch the show';
+        card.appendChild(h); card.appendChild(p); el.appendChild(card);
+        return;
+      }
       items.slice(0, 6).forEach(it => {
         const card = document.createElement('div'); card.className = 'card';
         if (it.thumbnail) { const img=document.createElement('img'); img.className='card-img'; img.src=it.thumbnail; img.alt=it.title; card.appendChild(img); }
         const a=document.createElement('a'); a.className='card-body'; a.href=`/episodes/${it.slug}/`;
-        const h = document.createElement('h3');
-        h.textContent = it.title;
-        const p = document.createElement('p');
-        p.textContent = it.description;
+        const h = document.createElement('h3'); h.textContent = it.title;
+        const p = document.createElement('p'); p.textContent = it.description;
         a.appendChild(h); a.appendChild(p); card.appendChild(a);
         el.appendChild(card);
       });
