@@ -46,17 +46,32 @@
     const firebaseConfig = {"projectId":"studio-6465048620-21f78","appId":"1:479548757971:web:6c8fd092f8c2e983c24126","apiKey":"AIzaSyDMe0ExQbmfplEAlcGfwZzFETj4tU6TkNw","authDomain":"studio-6465048620-21f78.firebaseapp.com","measurementId":"","messagingSenderId":"479548757971"};
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    let placeholders = {};
     async function loadEpisodes(){
-      const fallback=[{title:'Episode',description:'Coming soon'}];
+      const fallback=[{title:'Episode',description:'Coming soon', thumbnail:''}];
+      try {
+        const res = await fetch('/SRC/lib/placeholder-images.json');
+        if (res.ok) {
+          const j = await res.json();
+          j.placeholderImages.forEach(p => placeholders[p.id] = p.imageUrl);
+        }
+      } catch {}
       try{
         const snap=await getDocs(collection(db,'episodes'))
-        const items=[];snap.forEach(d=>{const x=d.data();items.push({title:x.title||[x.city,x.state].filter(Boolean).join(', '),description:x.description||x.summary||''})});
+        const items=[];snap.forEach(d=>{const x=d.data();items.push({id:d.id,title:x.title||[x.city,x.state].filter(Boolean).join(', '),description:x.description||x.summary||'',thumbnail:x.thumbnail||placeholders[x.imageId]||placeholders['world-map']||''})});
         render(items.length?items:fallback)
       }catch(e){render(fallback)}
     }
     function render(items){
       const el=document.getElementById('episodes-list');el.innerHTML='';
-      items.forEach(it=>{const card=document.createElement('div');card.className='card';const h=document.createElement('h3');h.textContent=it.title;const p=document.createElement('p');p.textContent=it.description;card.appendChild(h);card.appendChild(p);el.appendChild(card)})
+      items.forEach(it=>{
+        const card=document.createElement('div');card.className='card';
+        if (it.thumbnail) { const img=document.createElement('img'); img.className='card-img'; img.src=it.thumbnail; img.alt=it.title; card.appendChild(img); }
+        const a=document.createElement('a'); a.className='card-body'; a.href=`/episodes/view.html?id=${encodeURIComponent(it.id||'')}`;
+        const h=document.createElement('h3');h.textContent=it.title;const p=document.createElement('p');p.textContent=it.description;
+        a.appendChild(h); a.appendChild(p); card.appendChild(a);
+        el.appendChild(card)
+      })
     }
     loadEpisodes()
   </script>
