@@ -4,49 +4,148 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Travel & Ask</title>
-  <meta name="description" content="Travel & Ask – episodes, reviews, and featured local businesses.">
+  <meta name="description" content="Travel & Ask – travel episodes, city reviews, and featured local businesses.">
+  <meta property="og:title" content="Travel & Ask">
+  <meta property="og:description" content="Discover destinations, watch episodes, and find featured local businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://travelandask.com/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    :root { --accent: #ff6f61; }
+    :root {
+      --accent: #ff6f61;
+      --bg: #0f172a;
+      --bg-2: #111827;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --card: #111827;
+      --border: #1f2937;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: #222; }
-    header { padding: 24px; text-align: center; border-bottom: 1px solid #eee; }
-    h1 { margin: 0; font-size: 2rem; }
-    .accent { color: var(--accent); }
-    main { max-width: 880px; margin: 0 auto; padding: 24px; }
-    .card { border: 1px solid #eee; border-radius: 12px; padding: 24px; margin: 16px 0; }
-    a.button { display: inline-block; padding: 12px 16px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid #eee; color: #666; }
-    .header-img { width: 100%; height: 360px; object-fit: cover; display: block; }
-    @media (min-width: 768px) { .header-img { height: 500px; } }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--text); background: linear-gradient(180deg, var(--bg), var(--bg-2)); }
+    a { color: var(--text); text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .nav {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px);
+      background: rgba(17, 24, 39, 0.7); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+    .brand { font-family: Playfair Display, serif; font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; }
+    .brand .accent { color: var(--accent); }
+    .links { display: flex; gap: 20px; }
+    .links a { color: var(--muted); font-weight: 600; }
+    .links a:hover { color: var(--text); }
+
+    .hero { position: relative; min-height: 72vh; display: grid; place-items: center; text-align: center; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: url('assets/hero.svg');
+      background-size: cover; background-position: center; filter: brightness(0.85);
+    }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.65)); }
+    .hero-content { position: relative; padding: 24px; }
+    .hero-title { font-family: Playfair Display, serif; font-size: clamp(2rem, 7vw, 4rem); margin: 0 0 12px; }
+    .hero-sub { color: var(--muted); font-size: clamp(1rem, 2.5vw, 1.25rem); margin-bottom: 24px; }
+    .cta { display: inline-flex; gap: 12px; }
+    .btn { display: inline-block; padding: 12px 18px; border-radius: 10px; font-weight: 700; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn:hover { transform: translateY(-1px); transition: transform 120ms ease; }
+
+    .section { padding: 60px 0; }
+    .section-title { font-family: Playfair Display, serif; font-size: 2rem; margin: 0 0 20px; }
+    .grid { display: grid; gap: 20px; }
+    @media (min-width: 768px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .card h3 { margin: 0 0 8px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .feature { display: grid; gap: 20px; align-items: center; }
+    @media (min-width: 900px) { .feature { grid-template-columns: 1.2fr 1fr; } }
+    .feature img { width: 100%; border-radius: 16px; display: block; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); text-align: center; }
   </style>
   <link rel="canonical" href="https://travelandask.com/">
+  <meta name="theme-color" content="#0f172a">
 </head>
 <body>
-  <header>
-    <img class="header-img" src="https://source.unsplash.com/1600x900/?couple,travel,scenic" alt="Couple looking into the distance">
-    <h1><span class="accent">Travel</span> &amp; Ask</h1>
-    <p>Episodes, reviews, and featured local businesses.</p>
-  </header>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="accent">Travel</span> &amp; Ask</div>
+      <div class="links">
+        <a href="#episodes">Episodes</a>
+        <a href="#about">About</a>
+        <a href="#feature">Feature Business</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content container">
+      <h1 class="hero-title">Stories from the road</h1>
+      <p class="hero-sub">City episodes, real reviews, and standout local businesses across the country.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#episodes">Watch Episodes</a>
+        <a class="btn btn-secondary" href="#feature">Feature Your Business</a>
+      </div>
+    </div>
+  </section>
+
   <main>
-    <div class="card">
-      <h2>Welcome</h2>
-      <p>Your GitHub Pages site is connected. This starter page confirms the branch-based deployment is working.</p>
-      <p>Replace this file with your full static site when ready.</p>
-    </div>
-    <div class="card">
-      <h2>Next Steps</h2>
-      <ul>
-        <li>Add assets under <code>assets/</code> and link them here.</li>
-        <li>Create pages like <code>episodes/</code> and <code>about/</code> as needed.</li>
-        <li>Keep <code>CNAME</code> at the repository root for your custom domain.</li>
-      </ul>
-      <p><a class="button" href="#">Explore Episodes</a></p>
-    </div>
+    <section id="episodes" class="section">
+      <div class="container">
+        <h2 class="section-title">Latest Episodes</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Austin, TX</h3>
+            <p>Live music, local eats, and lakeside sunsets.</p>
+          </div>
+          <div class="card">
+            <h3>Denver, CO</h3>
+            <p>Mountain views and downtown coffee crawls.</p>
+          </div>
+          <div class="card">
+            <h3>Miami, FL</h3>
+            <p>Beach vibes, art deco, and Cuban flavors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container feature">
+        <img src="assets/about.svg" alt="Couple traveling and overlooking scenic landscape" loading="lazy" width="1200" height="800">
+        <div>
+          <h2 class="section-title">About Travel &amp; Ask</h2>
+          <p class="card">We explore cities, meet locals, and feature the best businesses we find along the way. Every episode blends travel with real community stories to help you plan smarter trips.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="feature" class="section">
+      <div class="container">
+        <h2 class="section-title">Feature Your Business</h2>
+        <div class="card">
+          <p>Want your business highlighted in an upcoming episode? Get in touch to be featured and reach engaged travelers and locals.</p>
+          <div style="margin-top:16px">
+            <a class="btn btn-primary" href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <small>&copy; <span id="y"></span> Travel &amp; Ask</small>
+    <div class="container">
+      <small>&copy; <span id="y"></span> Travel &amp; Ask • All rights reserved</small>
+    </div>
   </footer>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-  
 </body>
 </html>
