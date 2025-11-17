@@ -99,20 +99,7 @@
     <section id="episodes" class="section">
       <div class="container">
         <h2 class="section-title">Latest Episodes</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Austin, TX</h3>
-            <p>Live music, local eats, and lakeside sunsets.</p>
-          </div>
-          <div class="card">
-            <h3>Denver, CO</h3>
-            <p>Mountain views and downtown coffee crawls.</p>
-          </div>
-          <div class="card">
-            <h3>Miami, FL</h3>
-            <p>Beach vibes, art deco, and Cuban flavors.</p>
-          </div>
-        </div>
+        <div id="episodes-list" class="grid cols-3"></div>
       </div>
     </section>
 
@@ -148,7 +135,7 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-    import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+    import { getFirestore, collection, getDocs, query, orderBy, limit } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
     import { getAuth } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
     const firebaseConfig = {"projectId":"studio-6465048620-21f78","appId":"1:479548757971:web:6c8fd092f8c2e983c24126","apiKey":"AIzaSyDMe0ExQbmfplEAlcGfwZzFETj4tU6TkNw","authDomain":"studio-6465048620-21f78.firebaseapp.com","measurementId":"","messagingSenderId":"479548757971"};
     const app = initializeApp(firebaseConfig);
@@ -157,6 +144,47 @@
     window.firebaseApp = app;
     window.firestore = db;
     window.firebaseAuth = auth;
+
+    async function loadEpisodes() {
+      const fallback = [
+        { title: 'Austin, TX', description: 'Live music, local eats, and lakeside sunsets.' },
+        { title: 'Denver, CO', description: 'Mountain views and downtown coffee crawls.' },
+        { title: 'Miami, FL', description: 'Beach vibes, art deco, and Cuban flavors.' }
+      ];
+      try {
+        const q = query(collection(db, 'episodes'));
+        const snap = await getDocs(q);
+        const items = [];
+        snap.forEach(doc => {
+          const d = doc.data();
+          items.push({
+            title: d.title || [d.city, d.state].filter(Boolean).join(', ') || 'Episode',
+            description: d.description || d.summary || ''
+          });
+        });
+        renderEpisodes(items.length ? items : fallback);
+      } catch (e) {
+        renderEpisodes(fallback);
+      }
+    }
+
+    function renderEpisodes(items) {
+      const el = document.getElementById('episodes-list');
+      el.innerHTML = '';
+      items.slice(0, 6).forEach(it => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const h = document.createElement('h3');
+        h.textContent = it.title;
+        const p = document.createElement('p');
+        p.textContent = it.description;
+        card.appendChild(h);
+        card.appendChild(p);
+        el.appendChild(card);
+      });
+    }
+
+    loadEpisodes();
   </script>
 </body>
 </html>
