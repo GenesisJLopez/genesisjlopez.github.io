@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feature Your Business • Travel & Ask</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo"><img src="/assets/logo.png" alt="Travel &amp; Ask logo" onerror="this.src='/assets/logo.svg'"></div>
+        <div class="brand-name"><span class="accent">Travel</span> &amp; Ask</div>
+      </div>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/episodes/">Episodes</a>
+        <a href="/about/">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Feature Your Business</h1>
+        <div class="card" style="max-width:720px">
+          <form id="feature-form">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <input required name="businessName" placeholder="Business Name" style="padding:12px;border:1px solid var(--border);border-radius:10px">
+              <input required name="contactName" placeholder="Your Name" style="padding:12px;border:1px solid var(--border);border-radius:10px">
+              <input required type="email" name="email" placeholder="Email" style="padding:12px;border:1px solid var(--border);border-radius:10px">
+              <input name="phone" placeholder="Phone" style="padding:12px;border:1px solid var(--border);border-radius:10px">
+              <input name="city" placeholder="City, State" style="padding:12px;border:1px solid var(--border);border-radius:10px">
+            </div>
+            <textarea name="message" placeholder="Tell us about your business" style="margin-top:12px;width:100%;min-height:140px;padding:12px;border:1px solid var(--border);border-radius:10px"></textarea>
+            <div style="margin-top:12px">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+          </form>
+          <div id="submit-status" style="margin-top:12px;color:var(--muted)"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>&copy; <span id="y"></span> Travel &amp; Ask</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+    import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+    const firebaseConfig = {"projectId":"studio-6465048620-21f78","appId":"1:479548757971:web:6c8fd092f8c2e983c24126","apiKey":"AIzaSyDMe0ExQbmfplEAlcGfwZzFETj4tU6TkNw","authDomain":"studio-6465048620-21f78.firebaseapp.com","measurementId":"","messagingSenderId":"479548757971"};
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const form=document.getElementById('feature-form');
+    const status=document.getElementById('submit-status');
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      status.textContent='Submitting...';
+      const fd=new FormData(form);
+      const payload={
+        businessName:fd.get('businessName')||'',
+        contactName:fd.get('contactName')||'',
+        email:fd.get('email')||'',
+        phone:fd.get('phone')||'',
+        city:fd.get('city')||'',
+        message:fd.get('message')||'',
+        createdAt:serverTimestamp()
+      };
+      try{
+        await addDoc(collection(db,'business_submissions'),payload);
+        status.textContent='Thanks! We will be in touch.';
+        form.reset();
+      }catch(err){
+        status.textContent='Could not submit. Email info@travelandask.com';
+      }
+    })
+  </script>
+</body>
+</html>
