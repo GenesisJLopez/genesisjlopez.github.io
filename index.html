@@ -84,16 +84,6 @@
 
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-    import { getFirestore, collection, getDocs, query } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-    import { getAuth } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-    const firebaseConfig = {"projectId":"studio-6465048620-21f78","appId":"1:479548757971:web:6c8fd092f8c2e983c24126","apiKey":"AIzaSyDMe0ExQbmfplEAlcGfwZzFETj4tU6TkNw","authDomain":"studio-6465048620-21f78.firebaseapp.com","measurementId":"","messagingSenderId":"479548757971"};
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
-    window.firebaseApp = app;
-    window.firestore = db;
-    window.firebaseAuth = auth;
 
     // Hero image: use local assets/hero.jpg if present
     (async () => {
@@ -108,35 +98,17 @@
     })();
 
     async function loadEpisodes() {
-      const fallback = [
-        { title: 'Austin, TX', description: 'Live music, local eats, and lakeside sunsets.', thumbnail: '' },
-        { title: 'Denver, CO', description: 'Mountain views and downtown coffee crawls.', thumbnail: '' },
-        { title: 'Miami, FL', description: 'Beach vibes, art deco, and Cuban flavors.', thumbnail: '' }
-      ];
-      let placeholders = {};
       try {
-        const res = await fetch('SRC/lib/placeholder-images.json');
-        if (res.ok) {
-          const j = await res.json();
-          j.placeholderImages.forEach(p => placeholders[p.id] = p.imageUrl);
-        }
-      } catch {}
-      try {
-        const q = query(collection(db, 'episodes'));
-        const snap = await getDocs(q);
-        const items = [];
-        snap.forEach(doc => {
-          const d = doc.data();
-          items.push({
-            id: doc.id,
-            title: d.title || [d.city, d.state].filter(Boolean).join(', ') || 'Episode',
-            description: d.description || d.summary || '',
-            thumbnail: d.thumbnail || placeholders[d.imageId] || placeholders['world-map'] || ''
-          });
-        });
-        renderEpisodes(items.length ? items : fallback);
-      } catch (e) {
-        renderEpisodes(fallback);
+        const res = await fetch('assets/episodes.json');
+        if (!res.ok) throw new Error('no episodes');
+        const items = await res.json();
+        renderEpisodes(items);
+      } catch {
+        renderEpisodes([
+          { slug: 'austin-tx', title: 'Austin, TX', description: 'Live music, local eats, and lakeside sunsets.', thumbnail: '' },
+          { slug: 'denver-co', title: 'Denver, CO', description: 'Mountain views and downtown coffee crawls.', thumbnail: '' },
+          { slug: 'miami-fl', title: 'Miami, FL', description: 'Beach vibes, art deco, and Cuban flavors.', thumbnail: '' }
+        ]);
       }
     }
 
@@ -146,7 +118,7 @@
       items.slice(0, 6).forEach(it => {
         const card = document.createElement('div'); card.className = 'card';
         if (it.thumbnail) { const img=document.createElement('img'); img.className='card-img'; img.src=it.thumbnail; img.alt=it.title; card.appendChild(img); }
-        const a=document.createElement('a'); a.className='card-body'; a.href=`/episodes/view.html?id=${encodeURIComponent(it.id||'')}`;
+        const a=document.createElement('a'); a.className='card-body'; a.href=`/episodes/${it.slug}/`;
         const h = document.createElement('h3');
         h.textContent = it.title;
         const p = document.createElement('p');

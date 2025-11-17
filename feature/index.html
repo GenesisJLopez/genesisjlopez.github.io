@@ -55,34 +55,19 @@
   </footer>
 
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-    import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-    const firebaseConfig = {"projectId":"studio-6465048620-21f78","appId":"1:479548757971:web:6c8fd092f8c2e983c24126","apiKey":"AIzaSyDMe0ExQbmfplEAlcGfwZzFETj4tU6TkNw","authDomain":"studio-6465048620-21f78.firebaseapp.com","measurementId":"","messagingSenderId":"479548757971"};
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  <script>
     const form=document.getElementById('feature-form');
     const status=document.getElementById('submit-status');
-    form.addEventListener('submit',async e=>{
+    form.addEventListener('submit',e=>{
       e.preventDefault();
-      status.textContent='Submitting...';
       const fd=new FormData(form);
-      const payload={
-        businessName:fd.get('businessName')||'',
-        contactName:fd.get('contactName')||'',
-        email:fd.get('email')||'',
-        phone:fd.get('phone')||'',
-        city:fd.get('city')||'',
-        message:fd.get('message')||'',
-        createdAt:serverTimestamp()
-      };
-      try{
-        await addDoc(collection(db,'business_submissions'),payload);
-        status.textContent='Thanks! We will be in touch.';
-        form.reset();
-      }catch(err){
-        status.textContent='Could not submit. Email info@travelandask.com';
-      }
+      const subject=encodeURIComponent('Feature Business Submission');
+      const body=encodeURIComponent(
+        `Business: ${fd.get('businessName')||''}\nName: ${fd.get('contactName')||''}\nEmail: ${fd.get('email')||''}\nPhone: ${fd.get('phone')||''}\nCity: ${fd.get('city')||''}\n\n${fd.get('message')||''}`
+      );
+      const href=`mailto:info@travelandask.com?subject=${subject}&body=${body}`;
+      status.textContent='Opening email client...';
+      location.href=href;
     })
   </script>
 </body>
