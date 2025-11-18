@@ -1,0 +1,148 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-home",
+      "description": "Couple looking over a scenic mountain valley",
+      "imageUrl": "https://images.unsplash.com/photo-1762216443989-37cea3427b48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y291cGxlJTIwbW91bnRhaW5zfGVufDB8fHx8MTc2Mjg5MzU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "couple mountains"
+    },
+    {
+      "id": "hero-blog",
+      "description": "A person writing in a journal with a map in the background",
+      "imageUrl": "https://images.unsplash.com/photo-1618393677542-332fb467ecd8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxqb3VybmFsJTIwbWFwfGVufDB8fHx8MTc2Mjg5MzU1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "journal map"
+    },
+    {
+      "id": "hero-vlogs",
+      "description": "A camera on a tripod filming a scenic landscape",
+      "imageUrl": "https://images.unsplash.com/photo-1621310987557-99f737a0e9e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjYW1lcmElMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzYyODY3NTMwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "camera landscape"
+    },
+    {
+      "id": "hero-reviews",
+      "description": "A person giving a thumbs up in a beautiful hotel lobby",
+      "imageUrl": "https://images.unsplash.com/photo-1660557989695-14fac79c086d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxob3RlbCUyMGxvYmJ5fGVufDB8fHx8MTc2MjgyMDYwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel lobby"
+    },
+    {
+      "id": "hero-questions",
+      "description": "Question marks made of clouds in the sky",
+      "imageUrl": "https://images.unsplash.com/photo-1640375519303-9790265d79b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxxdWVzdGlvbiUyMHNreXxlbnwwfHx8fDE3NjI4OTM1NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "question sky"
+    },
+    {
+      "id": "hero-business",
+      "description": "A bustling modern city street with many storefronts",
+      "imageUrl": "https://images.unsplash.com/photo-1612542856517-a57292d1c812?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXR5JTIwc3RvcmVmcm9udHN8ZW58MHx8fHwxNzYyODkzNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city storefronts"
+    },
+    {
+      "id": "hero-map",
+      "description": "A vintage map with a compass and magnifying glass",
+      "imageUrl": "https://images.unsplash.com/photo-1520299607509-dcd935f9a839?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwbWFwfGVufDB8fHx8MTc2Mjg3MTczOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vintage map"
+    },
+    {
+      "id": "hero-premium",
+      "description": "A golden VIP ticket on a luxurious background",
+      "imageUrl": "https://images.unsplash.com/photo-1623669347035-9e85569f095a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx2aXAlMjB0aWNrZXR8ZW58MHx8fHwxNzYyODkzNTU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vip ticket"
+    },
+    {
+      "id": "hero-itinerary",
+      "description": "A person planning a trip on a large map",
+      "imageUrl": "https://images.unsplash.com/photo-1646303297330-17073f7823c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwbGFubmluZyUyMG1hcHxlbnwwfHx8fDE3NjI4OTM1NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "planning map"
+    },
+    {
+      "id": "post-tokyo-streets",
+      "description": "A bustling street in Tokyo at night with neon signs",
+      "imageUrl": "https://images.unsplash.com/photo-1552258698-f1a0635b71a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0b2t5byUyMHN0cmVldHxlbnwwfHx8fDE3NjI4MzQxNDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tokyo street"
+    },
+    {
+      "id": "post-kyoto-temples",
+      "description": "A serene temple in Kyoto surrounded by autumn leaves",
+      "imageUrl": "https://images.unsplash.com/photo-1635494441315-fbc3a131d9e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8a3lvdG8lMjB0ZW1wbGV8ZW58MHx8fHwxNzYyODY0MzMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kyoto temple"
+    },
+    {
+      "id": "post-italian-pasta",
+      "description": "A close-up of a delicious plate of Italian pasta",
+      "imageUrl": "https://images.unsplash.com/photo-1579684947550-22e945225d9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxpdGFsaWFuJTIwcGFzdGF8ZW58MHx8fHwxNzYyODkzNTU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "italian pasta"
+    },
+    {
+      "id": "post-paris-eiffel",
+      "description": "The Eiffel Tower in Paris on a sunny day",
+      "imageUrl": "https://images.unsplash.com/photo-1431274172761-fca41d930114?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxlaWZmZWwlMjB0b3dlcnxlbnwwfHx8fDE3NjI4ODY2MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "eiffel tower"
+    },
+    {
+      "id": "vlog-japan-trains",
+      "description": "A bullet train speeding through the Japanese countryside",
+      "imageUrl": "https://images.unsplash.com/photo-1595506971415-1a548683b692?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxidWxsZXQlMjB0cmFpbnxlbnwwfHx8fDE3NjI4OTM1NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bullet train"
+    },
+    {
+      "id": "vlog-market-tour",
+      "description": "A vibrant and colorful food market",
+      "imageUrl": "https://images.unsplash.com/photo-1529686398651-b8112f4bb98c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmb29kJTIwbWFya2V0fGVufDB8fHx8fDE3NjI3ODc5OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "food market"
+    },
+    {
+      "id": "vlog-island-hopping",
+      "description": "A small boat on crystal clear turquoise water near a tropical island",
+      "imageUrl": "https://images.unsplash.com/photo-1672841828271-54340a6fbcd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0cm9waWNhbCUyMGlzbGFuZHxlbnwwfHx8fDE3NjI4OTM1NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tropical island"
+    },
+    {
+      "id": "vlog-qna",
+      "description": "The two hosts sitting in a cozy studio answering questions",
+      "imageUrl": "https://images.unsplash.com/photo-1572018098513-8c5fa9a254cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxxbmElMjBzdHVkaW98ZW58MHx8fHwxNzYyODkzNTU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "qna studio"
+    },
+    {
+      "id": "review-hotel-oceania",
+      "description": "A luxury hotel room with a balcony view of the ocean",
+      "imageUrl": "https://images.unsplash.com/photo-1501117716987-c8c394bb29df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxob3RlbCUyMG9jZWFufGVufDB8fHx8MTc2Mjg5MzU1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hotel ocean"
+    },
+    {
+      "id": "review-bistro-leblanc",
+      "description": "A charming and cozy French bistro",
+      "imageUrl": "https://images.unsplash.com/photo-1601379342258-6f1e994c575c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmcmVuY2glMjBiaXN0cm98ZW58MHx8fHwxNzYyODkzNTU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "french bistro"
+    },
+    {
+      "id": "review-adventure-tours",
+      "description": "People ziplining through a lush jungle",
+      "imageUrl": "https://images.unsplash.com/photo-1578187218114-e14ccdab29ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8emlwbGluZSUyMGp1bmdsZXxlbnwwfHx8fDE3NjI4OTM1NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "zipline jungle"
+    },
+    {
+      "id": "biz-logo-1",
+      "description": "Logo for 'Global Eats Catering'",
+      "imageUrl": "https://images.unsplash.com/photo-1754837369018-ff35655d126f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYyODA1NjExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract logo"
+    },
+    {
+      "id": "biz-logo-2",
+      "description": "Logo for 'Horizon Hotels'",
+      "imageUrl": "https://images.unsplash.com/photo-1618242556516-6858a8f34cb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaW5pbWFsaXN0JTIwbG9nb3xlbnwwfHx8fDE3NjI4NzE4MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist logo"
+    },
+    {
+      "id": "biz-logo-3",
+      "description": "Logo for 'Summit Adventures'",
+      "imageUrl": "https://images.unsplash.com/photo-1571845398021-becaddc6265e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtb3VudGFpbiUyMGxvZ298ZW58MHx8fHwxNzYyODkwMDY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain logo"
+    },
+    {
+      "id": "world-map",
+      "description": "A stylized world map in muted colors",
+      "imageUrl": "https://images.unsplash.com/photo-1524661135-423995f22d0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b3JsZCUyMG1hcHxlbnwwfHx8fDE3NjI4NzE3Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "world map"
+    }
+  ]
+}

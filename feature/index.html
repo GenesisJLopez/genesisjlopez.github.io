@@ -38,7 +38,7 @@
           <p class="quote">“A polished feature and genuine 5‑star reviews. Our reputation jumped and so did reservations.” — Verified 5‑Star Review</p>
           <p>If you’re interested in being featured, we’d love to connect and make it happen.</p>
           <p>Warm regards,<br>Genesis &amp; Stephanie — Travel and Ask<br>“Exploring the world, one question at a time.”</p>
-          <p><a class="btn btn-primary" href="tel:3258644351">Call 325‑864‑4351</a> <a class="btn btn-secondary" href="mailto:info@travelandask.com?subject=Featured%20Business">Email Us</a></p>
+          <p><a class="btn btn-primary" href="tel:3258644351">Call 325‑864‑4351</a> <a class="btn btn-secondary" href="mailto:us@travelandask.com?subject=Featured%20Business">Email Us</a></p>
         </div>
         <div class="card" style="max-width:720px">
           <form id="feature-form">
@@ -77,7 +77,7 @@
       const body=encodeURIComponent(
         `Business: ${fd.get('businessName')||''}\nName: ${fd.get('contactName')||''}\nEmail: ${fd.get('email')||''}\nPhone: ${fd.get('phone')||''}\nCity: ${fd.get('city')||''}\n\n${fd.get('message')||''}`
       );
-      const href=`mailto:info@travelandask.com?subject=${subject}&body=${body}`;
+      const href=`mailto:us@travelandask.com?subject=${subject}&body=${body}`;
       status.textContent='Opening email client...';
       location.href=href;
     })
