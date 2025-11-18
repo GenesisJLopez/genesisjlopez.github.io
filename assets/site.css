@@ -40,5 +40,6 @@ a{color:var(--text);text-decoration:none}
 footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);text-align:center}
 
 .hero.image::before{display:none}
-.stars{color:var(--gold);font-size:1.25rem;letter-spacing:2px;margin-bottom:8px}
+.stars{font-size:1.25rem;letter-spacing:2px;margin-bottom:8px;display:inline-block;background:linear-gradient(90deg,var(--gold) 0%,#fff 50%,var(--gold) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 6s ease-in-out infinite}
+.@keyframes shine{0%{background-position:200% 0}50%{background-position:100% 0}100%{background-position:0 0}}
 .quote{font-style:italic;color:var(--muted)}
