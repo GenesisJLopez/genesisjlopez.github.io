@@ -65,16 +65,20 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   <script type="module">
 
-    // Hero image: use local assets/hero.jpg if present
     (async () => {
-      try {
-        const res = await fetch('assets/hero.jpg', { method: 'HEAD' });
-        if (res.ok) {
-          const hero = document.querySelector('.hero');
-          hero.classList.add('image');
-          hero.style.background = `url('assets/hero.jpg') center/cover no-repeat`;
-        }
-      } catch {}
+      const c = ['assets/hero.jpg','assets/hero.png','assets/hero.webp'];
+      for (const u of c) {
+        try {
+          const r = await fetch(u, { method: 'HEAD' });
+          if (r.ok) {
+            const hero = document.querySelector('.hero');
+            hero.classList.add('image');
+            hero.style.minHeight = '75vh';
+            hero.style.background = `url('${u}') center/cover no-repeat`;
+            break;
+          }
+        } catch {}
+      }
     })();
     
   </script>
